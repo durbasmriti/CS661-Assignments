@@ -40,12 +40,12 @@ if usePhong == "yes":
 else:
     volumeProperty.ShadeOff()
 
-# Create the volume and set the mapper and property
+# Volume, and setting the mapper and property
 volume = vtk.vtkVolume()
 volume.SetMapper(volumeMapper)
 volume.SetProperty(volumeProperty)
 
-# Use vtkOutlineFilter to add an outline to the volume
+# Adding an outline
 outline = vtk.vtkOutlineFilter()
 outline.SetInputData(reader.GetOutput())
 outlineMapper = vtk.vtkPolyDataMapper()
@@ -53,7 +53,7 @@ outlineMapper.SetInputConnection(outline.GetOutputPort())
 outlineActor = vtk.vtkActor()
 outlineActor.SetMapper(outlineMapper)
 
-# Create a render window and add the volume and outline
+# Render window
 renderer = vtk.vtkRenderer()
 renderer.AddVolume(volume)
 renderer.AddActor(outlineActor)
@@ -65,7 +65,7 @@ renWindow.AddRenderer(renderer)
 windowInteractor = vtk.vtkRenderWindowInteractor()
 windowInteractor.SetRenderWindow(renWindow)
 
-# Start the interaction
+# Interaction
 windowInteractor.Initialize()
 renWindow.Render()
 windowInteractor.Start()
