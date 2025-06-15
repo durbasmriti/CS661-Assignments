@@ -1,5 +1,6 @@
 # CS661 - Assignment 1 - Part 2
 import vtk
+from vtk import *
 
 # Loading the data
 reader = vtk.vtkXMLImageDataReader()
@@ -31,7 +32,7 @@ volumeProperty.SetColor(colorTF)
 volumeProperty.SetScalarOpacity(opacityTF)
 
 # Phong shading?
-usePhong = input("Do you want to use Phong shading? (yes/no) ")
+usePhong = input("Do you want to use Phong shading? (yes/no) ").strip().lower()
 if usePhong == "yes":
     volumeProperty.ShadeOn()
     volumeProperty.SetAmbient(0.5)
