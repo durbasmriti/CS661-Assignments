@@ -30,7 +30,7 @@ Isabel_3D.vti
 
 Set the filename correct:
 
-reader.SetFileName(r"C:\\Users\\durba\\Downloads\\vtk_practice\\CS661-Assignments\\Assignment1\\Isabel_3D.vti")
+`reader.SetFileName(r"C:\\Users\\durba\\Downloads\\vtk_practice\\CS661-Assignments\\Assignment1\\Isabel_3D.vti")`
 
 Modify this line according to the path of Isabel_3D.py in your directory (Note: Use double slash in the directory name)
 
