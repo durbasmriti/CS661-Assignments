@@ -1,4 +1,5 @@
 Part 1 of Assignment_1 (part1.py):
+-------
 
 This script extracts the isocontour from a 2D scalar field in VTI format.
 
@@ -20,7 +21,8 @@ Output:
 - This can be visualized in ParaView
 
 
-Part 2 of  Assignment_1:
+Part 2 of  Assignment_1 (part2.py):
+-------
 
 Dataset:
 -------
