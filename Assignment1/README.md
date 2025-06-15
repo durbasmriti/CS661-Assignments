@@ -61,4 +61,4 @@ Mohd Fahad
 
 Pratiksha Dawane
 
-Course: CS661 - Visualization
+Course: CS661 - Big Data Analytics (IITK)
