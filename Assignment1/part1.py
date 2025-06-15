@@ -1,28 +1,22 @@
 import vtk
-import sys
 from vtk import *
+import sys
 
-# load the dataset
 reader = vtk.vtkXMLImageDataReader()
-reader.SetFileName(r"C:\\Users\\durba\\Downloads\\vtk_practice\\CS661-Assignments\\Assignment1\\Isabel_2D.vti")
-reader.Update()
-data = reader.GetOutput()
 
-# take user input
+# interpolate
 def interpolate(p1, p2, val1, val2, isovalue):
     t = (isovalue - val1) / (val2 - val1)
     return [p1[i] + t * (p2[i] - p1[i]) for i in range(3)]
 
-
-# have to store isolines and points p where f(p) = isovalue
 def extract_isocontour(image_data, isovalue):
     dims = image_data.GetDimensions()
+    # to store points where f(p) = isoval
     points = vtk.vtkPoints()
+    # to store lines
     lines = vtk.vtkCellArray()
 
     point_data = image_data.GetPointData().GetScalars()
-
-    # maintain a vtkCellArray object and later add it to vtkPolyData
 
     def get_point_id(i, j):
         return j * dims[0] + i
@@ -69,24 +63,23 @@ def write_polydata(polydata, output_filename):
     writer.SetInputData(polydata)
     writer.Write()
 
-    if __name__ == "__main__":
-        if len(sys.argv) != 3:
-            print("Usage: python extract_contour.py <input.vti> <isovalue>")
-            sys.exit(1)
-    
-        input_vti = sys.argv[1]
-        isovalue = float(sys.argv[2])
-        output_vtp = "isocontour_output.vtp"
-    
-        # Use the reader already defined above, or define a function to load image data if needed
-        # Here, we use the reader from above for simplicity
-        reader.SetFileName(input_vti)
-        reader.Update()
-        image_data = reader.GetOutput()
-    
-        contour = extract_isocontour(image_data, isovalue)
-        write_polydata(contour, output_vtp)
-    
-        print(f"Isocontour extracted and saved to {output_vtp}")
+if _name_ == "_main_":
+    if len(sys.argv) != 3:
+        print("Usage: python extract_contour.py <input.vti> <isovalue>")
+        sys.exit(1)
+
+    input_vti = sys.argv[1]
+    isovalue = float(sys.argv[2])
+    output_vtp = "isocontour_output.vtp"
+
+    # Use the reader already defined above, or define a function to load image data if needed
+    # Here, we use the reader from above for simplicity
+    reader.SetFileName(input_vti)
+    reader.Update()
+    image_data = reader.GetOutput()
+    contour = extract_isocontour(image_data, isovalue)
+    write_polydata(contour, output_vtp)
+
+    print(f"Isocontour extracted and saved to {output_vtp}")
 
 
