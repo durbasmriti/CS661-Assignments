@@ -5,3 +5,5 @@ This script builds an interactive interface that combines a 3D isosurface view w
 To run the code, open the app.ipynb file and run the cells.
 
 Note: Once the interactive interface is started, clicking the reset control might take a short time because the initial state is restored.
+
+![Plot at Isoval=0](isoval_0.png)
